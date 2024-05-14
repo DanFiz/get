@@ -22,7 +22,7 @@ ax.yaxis.set_major_locator(ticker.MultipleLocator(0.5))
 ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.1))
 
 plt.ylim(0, 3.3)
-plt.xlim(0, 12)
+plt.xlim(0, 10)
 
 ax.set_title("\n".join(wrap('Процесс заряда и разряда конденсатора в RC-цепочке', 60)), loc = 'center', fontsize = 20)
 
@@ -38,8 +38,14 @@ markers_on = np.arange(0, data.size + 1, 20)
 ax.plot(data_time, data, c='blue',markevery=markers_on, marker = 'o',  label = 'V(t)')
 
 
-ax.text(7, 2.25, 'Время заряда = 4.21 c', fontsize = 15)
-ax.text(7, 1.75, 'Время разряда = 5.65 c', fontsize = 15)
+t1 = data_time[np.argmax(data)] - data_time[0]
+t2 = data_time[-1] - t1
+
+st1 = 'Время заряда = {0:.2f} c'.format(t1)
+st2 = 'Время разряда = {0:.2f} c'.format(t2)
+
+ax.text(7, 2.25, st1, fontsize = 15)
+ax.text(7, 1.75, st2, fontsize = 15)
 
 ax.legend(shadow = False, loc = 'upper right', fontsize = 15)
 
