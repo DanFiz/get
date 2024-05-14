@@ -3,9 +3,11 @@ import numpy as np
 from textwrap import wrap
 import matplotlib.ticker as ticker
 
-settings = np.loadtxt('C:/Users/user/Desktop/Studies_Matirials/2 семестр/Инженерная подготовка/get/settings.txt', dtype = float)
+settings = np.loadtxt('C:/Users/user/Desktop/Studies_Matirials/2 семестр/Инженерная подготовка/get/settings1.txt', dtype = float)
 
-data=np.loadtxt('C:/Users/user/Desktop/Studies_Matirials/2 семестр/Инженерная подготовка/get/data.txt', dtype=int) * settings[1]
+
+data=np.loadtxt('C:/Users/user/Desktop/Studies_Matirials/2 семестр/Инженерная подготовка/get/data1.txt', dtype=float) * settings[1]
+
 
 data_time=np.array([i*settings[0] for i in range(data.size)])
 
@@ -18,6 +20,9 @@ ax.xaxis.set_minor_locator(ticker.MultipleLocator(0.5))
 
 ax.yaxis.set_major_locator(ticker.MultipleLocator(0.5))
 ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.1))
+
+plt.ylim(0, 3.3)
+plt.xlim(0, 12)
 
 ax.set_title("\n".join(wrap('Процесс заряда и разряда конденсатора в RC-цепочке', 60)), loc = 'center', fontsize = 20)
 
